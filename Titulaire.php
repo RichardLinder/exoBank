@@ -1,17 +1,19 @@
 <?php 
 class Titulaire
 {
-    private $noms;
+    private string  $age;
+    
+    public string  $noms;
 
-    private $prénoms;
+    private string $prénoms;
 
-    private $comptes=[];
+    private array $comptes;
 
     //date de naisance 
 
-    private $dDN;
+    private DateTime $dDN;
 
-    private $ville;
+    private  string $ville;
 
 
 
@@ -20,14 +22,12 @@ class Titulaire
         $this->prénoms = $prénoms;
         $this->dDN = new DateTime ("$dDN");
         $this->ville = $ville;
+        $this->age = $this->age();
     }
 
-public function newCompte($id,$libellé ,$solde=50,$devise="euro")
-{
-    $compte = new Compte ("$this->noms"."$this->prénoms. $this->dDN.$this->ville",$libellé ,$solde=50,$devise="euro") ; 
-    array_push($this->comptes ,$compte);
-     return $compte;
-}
+
+
+//_____________________________________________________________getter setter
 
 public function getNoms (){
 
@@ -44,13 +44,51 @@ public function getVille (){
 
 
     return $this->ville;
+
+}
+
+public function getDAteNaisance()
+{
+   return  $tis->dDN;
+}
+
+
+//_______________________________________________________________________________ fonction 
+
+
+public function addCompte($compte)
+{
+    $this->comptes[]=$compte;
+}
+
+public function newCompte($id,$libellé ,$solde=50,$devise="euro")
+{
+    $compte = new Compte ( $this,"$this->noms"."$this->prénoms. $this->dDN.$this->ville",$libellé ,$solde=50,$devise="euro") ; 
+    array_push($this->comptes ,$compte);
+     return $compte;
+}
+
+private function age()
+{
+    $now = new DateTime();
+
+$age = $this->dDN->diff($now);
+return $age->format('%y');
+    
 }
 
 public function identifiant(){
     echo $this->noms,$this->prénoms,$this->ville,$libellé ;
 }
 
+public function getInfo()
+{
+    echo "L'utilisateur $this->noms,$this->prénoms née le". $this->dDN->format('Y/m/d'). "agé de $this->age ans;  , poséde les compte suivant :<br>";
 
+    foreach ($this->comptes as $key ) 
+    {
+        echo $key->getLibellé(). "<br>";    
+    }
 
-
+}
 }
