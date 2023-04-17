@@ -1,7 +1,9 @@
 <?php 
 class Titulaire
 {
-    private string  $age;
+
+    /// Mieux en methode utilisant la date de naisance
+    // private string  $age;
     
     public string  $noms;
 
@@ -20,9 +22,9 @@ class Titulaire
     public function __construct($noms,$prénoms,$dDN,$ville) {
         $this->noms = $noms;
         $this->prénoms = $prénoms;
-        $this->dDN = new DateTime ("$dDN");
+        $this->dDN = new DateTime ($dDN);
         $this->ville = $ville;
-        $this->age = $this->age();
+        // $this->age = $this->age();
     }
 
 
@@ -61,12 +63,13 @@ public function addCompte($compte)
     $this->comptes[]=$compte;
 }
 
-public function newCompte($id,$libellé ,$solde=50,$devise="euro")
-{
-    $compte = new Compte ( $this,"$this->noms"."$this->prénoms. $this->dDN.$this->ville",$libellé ,$solde=50,$devise="euro") ; 
-    array_push($this->comptes ,$compte);
-     return $compte;
-}
+// fonction non utilisé gardé comme référence
+// public function newCompte($id,$libellé ,$solde=50,$devise="euro")
+// {
+//     $compte = new Compte ( $this,"$this->noms"."$this->prénoms. $this->dDN.$this->ville",$libellé ,$solde=50,$devise="euro") ; 
+//     array_push($this->comptes ,$compte);
+//      return $compte;
+// }
 
 private function age()
 {
@@ -78,12 +81,12 @@ return $age->format('%y');
 }
 
 public function identifiant(){
-    echo $this->noms,$this->prénoms,$this->ville,$libellé ;
+    return $this->noms,$this->prénoms,$this->ville, $this->libellé ;
 }
 
 public function getInfo()
 {
-    echo "L'utilisateur $this->noms,$this->prénoms née le". $this->dDN->format('Y/m/d'). "agé de $this->age ans;  , poséde les compte suivant :<br>";
+    echo "L'utilisateur $this->noms,$this->prénoms née le". $this->dDN->format('Y/m/d'). "agé de ".$this->age()." ans;  , poséde les compte suivant :<br>";
 
     foreach ($this->comptes as $key ) 
     {
