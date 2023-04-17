@@ -90,7 +90,7 @@ public function getInfo()
 
     foreach ($this->comptes as $key ) 
     {
-        echo $key->getLibelle(). "<br>";    
+        return $key->getLibelle(). "<br>";    
     }
 
 }
