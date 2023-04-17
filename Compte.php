@@ -3,19 +3,19 @@ class Compte
 {
     // 
    private  Titulaire $titulaire; 
-   private  string $libellé;
+   private  string $libelle;
    private  float $solde;
    private   string $devise;
 
 
 
-   public function __construct( $titulaire, $libellé, $solde=50,$devise="euro" ) 
+   public function __construct( $titulaire, $libelle, $solde=50,$devise="euro" ) 
    {
         
 
         $this->titulaire = $titulaire;
 
-        $this->libellé = $libellé;
+        $this->libelle = $libelle;
         
         $this->solde = $solde;
         
@@ -38,9 +38,9 @@ class Compte
     {
         return $this->devise;
     }
-    public function getLibellé()
+    public function getLibelle()
     {
-        return $this->libellé;
+        return $this->libelle;
     }
 
     public function changeSolde($changement)
@@ -75,7 +75,7 @@ class Compte
 
    public function toString()
    {
-    return "un compte  $this->libellé ";
+    return "un compte  $this->libelle ";
    }
 
 }

@@ -7,7 +7,7 @@ class Titulaire
     
     public string  $noms;
 
-    private string $prénoms;
+    private string $prenoms;
 
     private array $comptes;
 
@@ -19,9 +19,9 @@ class Titulaire
 
 
 
-    public function __construct($noms,$prénoms,$dDN,$ville) {
+    public function __construct($noms,$prenoms,$dDN,$ville) {
         $this->noms = $noms;
-        $this->prénoms = $prénoms;
+        $this->prenoms = $prenoms;
         $this->dDN = new DateTime ($dDN);
         $this->ville = $ville;
         // $this->age = $this->age();
@@ -36,10 +36,10 @@ public function getNoms (){
 
     return $this->noms;
 }
-public function getPrénoms (){
+public function getPrenoms (){
 
 
-    return $this->Prénoms;
+    return $this->Prenoms;
 }
 
 public function getVille (){
@@ -63,10 +63,10 @@ public function addCompte($compte)
     $this->comptes[]=$compte;
 }
 
-// fonction non utilisé gardé comme référence
-// public function newCompte($id,$libellé ,$solde=50,$devise="euro")
+// fonction non utilise garde comme reference
+// public function newCompte($id,$libelle ,$solde=50,$devise="euro")
 // {
-//     $compte = new Compte ( $this,"$this->noms"."$this->prénoms. $this->dDN.$this->ville",$libellé ,$solde=50,$devise="euro") ; 
+//     $compte = new Compte ( $this,"$this->noms"."$this->prenoms. $this->dDN.$this->ville",$libelle ,$solde=50,$devise="euro") ; 
 //     array_push($this->comptes ,$compte);
 //      return $compte;
 // }
@@ -81,16 +81,16 @@ return $age->format('%y');
 }
 
 public function identifiant(){
-    return $this->noms,$this->prénoms,$this->ville, $this->libellé ;
+    return $this->noms,$this->prenoms,$this->ville, $this->libelle ;
 }
 
 public function getInfo()
 {
-    echo "L'utilisateur $this->noms,$this->prénoms née le". $this->dDN->format('Y/m/d'). "agé de ".$this->age()." ans;  , poséde les compte suivant :<br>";
+    echo "L'utilisateur $this->noms,$this->prenoms nee le". $this->dDN->format('Y/m/d'). "age de ".$this->age()." ans;  , posede les compte suivant :<br>";
 
     foreach ($this->comptes as $key ) 
     {
-        echo $key->getLibellé(). "<br>";    
+        echo $key->getLibelle(). "<br>";    
     }
 
 }
