@@ -81,17 +81,19 @@ return $age->format('%y');
 }
 
 public function identifiant(){
-    return $this->noms,$this->prenoms,$this->ville, $this->libelle ;
+    return "$this->noms $this->prenoms $this->ville $this->libelle";
 }
 
 public function getInfo()
 {
-    echo "L'utilisateur $this->noms,$this->prenoms nee le". $this->dDN->format('Y/m/d'). "age de ".$this->age()." ans;  , posede les compte suivant :<br>";
+    $resultat = "L'utilisateur $this->noms,$this->prenoms nee le". $this->dDN->format('Y/m/d'). "age de ".$this->age()." ans;  , posede les compte suivant :<br>";
 
     foreach ($this->comptes as $key ) 
     {
-        return $key->getLibelle(). "<br>";    
+        $resultat = $resultat . $key->getLibelle(). "<br>";    
     }
+
+    return $resultat;
 
 }
 }

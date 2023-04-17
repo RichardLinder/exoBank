@@ -16,9 +16,9 @@ $compteCourantPierre = new Compte ($titulaire2,"courant", 500, "euro" );
 $compteJeunePierre = new Compte ($titulaire2,"Jeune", 200000 );
 
 
-$titulaire1->getInfo();
+echo $titulaire1->getInfo();
 
-$titulaire2->getInfo();
+echo $titulaire2->getInfo();
 
 echo $compteCourantJean->getSolde(). "<br>";
 echo $compteCourantPierre->getSolde(). "<br> ";
